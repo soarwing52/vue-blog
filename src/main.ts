@@ -8,8 +8,8 @@ import router from './router'
 import VueCookies from "vue-cookies";
 
 import ElementPlus from "element-plus";
-
-// import "element-plus/dist/index.css";
+import zhTw from 'element-plus/es/locale/lang/zh-tw'
+import "./assets/main.css"
 import "./assets/theme.scss"
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
@@ -26,6 +26,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }
 
-app.use(ElementPlus);
+app.use(ElementPlus,{
+  locale: zhTw,
+});
 
 app.mount('#app')
