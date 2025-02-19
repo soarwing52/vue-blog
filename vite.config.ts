@@ -8,6 +8,7 @@ import nightwatchPlugin from 'vite-plugin-nightwatch'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base:"/vue-blog/",
   plugins: [
     vue(),
     vueJsx(),
