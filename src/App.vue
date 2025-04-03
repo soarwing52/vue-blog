@@ -13,9 +13,10 @@ import { RouterView } from 'vue-router'
       active-text-color="#ffd04b"
     >
       <el-menu-item index="/">Home</el-menu-item>
-      <el-menu-item index="/about">Tech</el-menu-item>
-      <el-menu-item index="/about">Outdoor</el-menu-item>
-      <el-menu-item index="/about">About</el-menu-item>
+      <el-menu-item index="/about">北投</el-menu-item>
+      <el-menu-item index="/about">德芙蘭</el-menu-item>
+      <el-menu-item index="/about">關子嶺</el-menu-item>
+      <el-menu-item index="/about">墾丁</el-menu-item>
     </el-menu>
   </el-header>
 

@@ -1,47 +1,60 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
+import LiveCam from '@/components/LiveCam.vue'
+import WeatherCard from '@/components/WeatherCard.vue'
+const videoId = 'aB6G95xqBrw' // Replace with your YouTube Live Video ID
 
-const articles = ref([
-  { id: 1, title: '我的第一篇文章', summary: '這是摘要內容...' },
-  { id: 2, title: 'Vue 3 新功能解析', summary: '深入了解 Vue 3 的 Composition API...' },
-])
+const videoUrl = computed(() => `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`)
 </script>
 
 <template>
-  <el-container>
-    <!-- 側邊欄 -->
-    <el-aside width="250px">
-      <el-card>
-        <h3>分類</h3>
-        <el-menu>
-          <el-menu-item index="1">技術</el-menu-item>
-          <el-menu-item index="2">生活</el-menu-item>
-          <el-menu-item index="3">旅行</el-menu-item>
-        </el-menu>
-      </el-card>
-    </el-aside>
+  <h1>龍洞天氣站</h1>
+  <!-- 中央氣象局資料 -->
+  <el-card class="youtube-live">
+    <h3>Live Stream</h3>
+    <iframe :src="videoUrl" frameborder="0" allowfullscreen></iframe>
+  </el-card>
+  <LiveCam />
+  <!-- <WeatherCard /> -->
 
-    <!-- 文章內容 -->
-    <el-main>
-      <el-card v-for="article in articles" :key="article.id" class="article-card">
-        <h2>{{ article.title }}</h2>
-        <p>{{ article.summary }}</p>
-        <el-button type="primary">閱讀更多</el-button>
-      </el-card>
-    </el-main>
-  </el-container>
+  <el-row>
+    <el-col :span="6" v-for="o in 4" :key="o">
+      <img
+        :src="`https://www.cwa.gov.tw/Data/fcst_img/QPF_ChFcstPrecip_12_${o * 12}.png?T=2025033010-3`"
+        height="450"
+      />
+    </el-col>
+  </el-row>
+  <el-card style="max-width: 480px">
+    <template #header>
+      <div class="card-header">
+        <span>中央氣象局資料</span>
+      </div>
+    </template>
+    <p v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</p>
+    <template #footer>Footer content</template>
+  </el-card>
+  <el-card style="max-width: 480px">
+    <template #header>
+      <div class="card-header">
+        <span>Windy 資料</span>
+      </div>
+    </template>
+    <p v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</p>
+    <template #footer>Footer content</template>
+  </el-card>
 </template>
 
 <style>
-.el-header {
-  background-color: #409eff;
-  color: white;
+.youtube-live {
+  max-width: 800px;
+  margin: auto;
   text-align: center;
-  font-size: 20px;
-  line-height: 60px;
 }
 
-.article-card {
-  margin-bottom: 20px;
+iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 8px;
 }
 </style>
