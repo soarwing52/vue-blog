@@ -1,5 +1,5 @@
 <template>
-  <el-card class="weather-card">
+  <el-card class="main-card">
     <h3>中央氣象局預報</h3>
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
       <el-tab-pane v-for="(dayData, date) in groupedByDay" :key="date" :name="date">
@@ -82,8 +82,8 @@ const groupedByDay = computed(() => {
   return result
 })
 
-let host = 'https://my-first-worker.soarwing52hot.workers.dev'
-host = 'http://127.0.0.1:8787'
+const host = 'https://my-first-worker.soarwing52hot.workers.dev'
+// host = 'http://127.0.0.1:8787'
 const fetchWeather = async () => {
   try {
     const response = await fetch(`${host}/api/weather`, {

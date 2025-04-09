@@ -1,22 +1,29 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+
+const locations = [
+  { label: '龍洞', route: '/' },
+  { label: '北投', route: '/beitou' },
+  { label: '德芙蘭', route: '/tefuren' },
+  { label: '關子嶺', route: '/guanziling' },
+  { label: '墾丁', route: '/kenting' },
+]
 </script>
 
 <template>
   <!-- 頂部導航欄 -->
-  <el-header>
+  <el-header class="nav-header">
     <el-menu
       mode="horizontal"
       router
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      class="nav-menu"
     >
-      <el-menu-item index="/">Home</el-menu-item>
-      <el-menu-item index="/about">北投</el-menu-item>
-      <el-menu-item index="/about">德芙蘭</el-menu-item>
-      <el-menu-item index="/about">關子嶺</el-menu-item>
-      <el-menu-item index="/about">墾丁</el-menu-item>
+      <template v-for="item in locations" :key="item.label">
+        <el-menu-item :index="item.route">{{ item.label }}</el-menu-item>
+      </template>
     </el-menu>
   </el-header>
 
@@ -27,16 +34,13 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-.el-header {
-  width: 100vw !important;
-  background-color: transparent !important;
+.nav-header {
   padding: 0;
 }
-.el-menu--horizontal {
-  width: 100% !important;
-}
 
-.el-menu--horizontal > .el-menu-item:nth-child(1) {
-  margin-right: auto;
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 </style>
