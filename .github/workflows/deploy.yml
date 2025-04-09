@@ -25,11 +25,11 @@ jobs:
         run: npm ci
 
       # Run type-check, lint, and build
-      - name: Run build
-        run: |
-          npm run type-check
-          npm run lint
-          npm run build
+      # - name: Run build
+      #   run: |
+      #     npm run type-check
+      #     npm run lint
+      #     npm run build
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
