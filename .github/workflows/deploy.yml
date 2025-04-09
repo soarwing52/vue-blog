@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Run type-check, lint, and build
+      - name: Run build
+        run: |
+          npm run type-check
+          npm run lint
+          npm run build
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        run: |
+          npm install gh-pages --save-dev
+          npm run deploy
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # GitHub token for authentication
