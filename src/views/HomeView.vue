@@ -3,6 +3,8 @@ import YoutubeStream from '@/components/YoutubeStream.vue'
 import LiveCam from '@/components/LiveCam.vue'
 import WeatherCard from '@/components/WeatherCard.vue'
 import RainForecast from '@/components/RainForecast.vue'
+import RainAccumulation from '@/components/RainAccumulation.vue'
+import Radar from '@/components/Radar.vue'
 
 import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
@@ -36,8 +38,10 @@ const links = [
         </div>
       </div>
       <RainForecast />
+      <RainAccumulation />
     </el-tab-pane>
     <el-tab-pane label="即時" name="live">
+      <Radar />
       <YoutubeStream />
       <LiveCam />
     </el-tab-pane>
